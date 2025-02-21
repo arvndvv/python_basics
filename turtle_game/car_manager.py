@@ -3,7 +3,7 @@ from turtle import Turtle
 import random
 
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
-
+car_speed = 5
 class CarManager:
     def __init__(self):
         self.cars = []
@@ -20,4 +20,18 @@ class CarManager:
     
     def move(self):
         for car in self.cars:
-            car.backward(5)
+            car.backward(car_speed)
+    def all_cars(self):
+        return self.cars
+    
+    def clear_cars(self):
+        for car in self.cars:
+            car.hideturtle()
+            car.clear()
+        self.cars = []
+    
+    def level_up(self):
+        global car_speed
+        car_speed += 5
+        self.clear_cars()
+        self.create_car()
